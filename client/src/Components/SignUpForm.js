@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
-class SignUpForm extends Component {
+class SignUpForm extends React.Component {
 
     constructor() {
-
         super();
 
         this.state = {
-            email: '',
-            password: '',
             name: '',
-            hasAgreed: false
+            password: '',
+            email: '',
+            team_role: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -37,14 +36,14 @@ class SignUpForm extends Component {
         e.preventDefault();
 
 
-        axios.post('mongodb://localhost:27017/ems/signup', {
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password
-          })
-          .then(function (response) {
-            console.log("Hello World");
-          });
+        // axios.post('mongodb://localhost:27017/ems/signup', {
+        //     name: this.state.name,
+        //     email: this.state.email,
+        //     password: this.state.password
+        //   })
+        //   .then(function (response) {
+        //     console.log("Hello World");
+        //   });
 
 
         console.log("SignUpForm was submitted with the following data");
@@ -57,7 +56,7 @@ class SignUpForm extends Component {
 
             <div className="FormCenter">
 
-                <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="FormFields">
 
                     <div className="FormField">
                       <label className="FormField__Label" htmlFor="name">Full Name</label>
@@ -75,15 +74,29 @@ class SignUpForm extends Component {
                     </div>
 
                     <div className="FormField">
+                      <label className="FormField__Label" htmlFor="team_role">Sign Up As</label>
+                      {/* <input type="text" id="team_role" className="FormField__Input" placeholder="Enter your Functional Role" name="team_role" value={this.state.team_role} onChange={this.handleChange}/> */}
+                      <select id="team_role" name="team_role" value={this.state.team_role} onChange={this.handleChange}>
+                            <option value="admin">Admin</option>
+                            <option value="team_member">Team Member</option>
+                        </select>
+                    </div>
+
+                                       
+
+
+                  
+
+                    {/* <div className="FormField">
                       <label className="FormField__CheckboxLabel">
                         <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange}/> I agree all statements in  
                           <a href="" className="FormField__TermsLink"> terms of service</a>   
                       </label>
-                    </div>
+                    </div> */}
 
                     <div className="FormField">
-                      <button className="FormField__Button mr-20">Sign Up</button>
-                      <Link to="/signin" className="FormField__Link">I'm already a member</Link>
+                      <button className="FormField__Button mr-20" onSubmit={this.onSubmit}>Sign Up</button>
+                      {/* <Link to="/signin" className="FormField__Link">I'm already a member</Link> */}
                     </div>
 
                 </form> 
