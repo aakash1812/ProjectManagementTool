@@ -12,7 +12,7 @@ class SignUpForm extends React.Component {
             name: '',
             password: '',
             email: '',
-            team_role: ''
+            team_role: 'admin'
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -23,7 +23,7 @@ class SignUpForm extends React.Component {
     handleChange(e){
 
         let target = e.target;
-        let value = target.type === 'checkbox' ? target.checked : target.value;
+        let value = target.value;
         let name = target.name;
 
         this.setState({
@@ -34,16 +34,19 @@ class SignUpForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-
-
-        // axios.post('mongodb://localhost:27017/ems/signup', {
-        //     name: this.state.name,
-        //     email: this.state.email,
-        //     password: this.state.password
-        //   })
-        //   .then(function (response) {
-        //     console.log("Hello World");
-        //   });
+     
+          axios.post('http://localhost:5000/signup', {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+            team_role : this.state.team_role
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
 
 
         console.log("SignUpForm was submitted with the following data");

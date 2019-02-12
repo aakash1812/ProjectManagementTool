@@ -34,6 +34,19 @@ class SignInForm extends Component {
     handleSubmit(e){
         e.preventDefault();
 
+
+        axios.get('http://localhost:5000/signin', {
+            email: this.state.email,
+            password: this.state.password
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
         console.log("SignInForm was submitted with the following data");
         console.log(this.state);
     }
@@ -60,7 +73,7 @@ class SignInForm extends Component {
 
                 <div className="FormField">
                   <button className="FormField__Button mr-20">Sign In</button>
-                  <Link to="/" className="FormField__Link">Create an account</Link>
+                  
                 </div>
 
             </form> 
