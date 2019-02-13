@@ -35,7 +35,7 @@ class SignInForm extends Component {
         e.preventDefault();
 
 
-        axios.get('http://localhost:5000/signin', {
+        axios.post('http://localhost:5000/signin', {
             email: this.state.email,
             password: this.state.password
           })
