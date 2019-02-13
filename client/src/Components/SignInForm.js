@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+
 
 
 class SignInForm extends Component {
@@ -11,7 +12,8 @@ class SignInForm extends Component {
 
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            signinSuccess : false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -39,7 +41,10 @@ class SignInForm extends Component {
             email: this.state.email,
             password: this.state.password
           })
-          .then(function (response) {
+          .then(response => {
+            if (response.data != null && response.status === 200) {
+                this.setState({signinSuccess : true})
+            }
             console.log(response);
           })
           .catch(function (error) {
@@ -51,11 +56,25 @@ class SignInForm extends Component {
         console.log(this.state);
     }
 
+
+
+    setRedirect = () => {
+        return <Redirect to='/dashboard' />
+    }
+
+
     render () {
+        if (this.state.signinSuccess){
+            return this.setRedirect()
+          }
+
         return (
 
             <div className="FormCenter">
 
+            <div className="PageSwitcher">
+              <Link exact to="/signup" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</Link>
+            </div>
             <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
 
 
