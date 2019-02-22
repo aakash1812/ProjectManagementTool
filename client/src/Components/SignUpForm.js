@@ -15,7 +15,7 @@ class SignUpForm extends React.Component {
             password: '',
             email: '',
             team_role: 'admin',
-            formErrors: {name: '', email: '', password: ''},
+            formErrors: {name: '', email: '', password: '', credentials: ''},
             emailValid: false,
             passwordValid: false,
             nameValid:false,
@@ -72,7 +72,9 @@ class SignUpForm extends React.Component {
 
 
     handleChange(e){
-
+        let user_exists_cred = this.state.formErrors;
+        user_exists_cred.credentials = '';
+        this.setState({formErrors : user_exists_cred});
         let target = e.target;
         let value = target.value;
         let name = target.name;
@@ -91,18 +93,18 @@ class SignUpForm extends React.Component {
             team_role : this.state.team_role
           })
           .then(response => {
-            console.log(response);
+        
             if (response.data === 'Success') {
-                this.setState({signupSuccess : true})
+                this.setState({signupSuccess : true});
+            } else if (response.data === 'User already exists'){
+              let cred = this.state.formErrors;
+              cred.credentials = 'Email-Id already exists';
+              this.setState({formErrors : cred});
             }
           })
           .catch(function (error) {
             console.log(error);
           });
-
-
-        console.log("SignUpForm was submitted with the following data");
-        console.log(this.state);
     }
 
 
