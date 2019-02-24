@@ -4,10 +4,36 @@ import SignUpForm from '../SignUpForm';
 import SignInForm from '../SignInForm';
 import RegistrationSuccess from '../RegistrationSuccess';
 import Dashboard from '../Dashboard'
-import { BrowserRouter} from 'react-router-dom';
+import { BrowserRouter, Redirect} from 'react-router-dom';
 import AddTeamMember from '../RightPanel/AddTeamMember';
 
-const Paths = () => {
+class Paths extends React.Component {
+
+
+jwtDecode = t => {
+    let token = {};
+    token.raw = t;
+    token.header = JSON.parse(window.atob(t.split('.')[0]));
+    token.payload = JSON.parse(window.atob(t.split('.')[1]));
+    return (token)
+}
+
+componentDidMount(){
+    let getToken = localStorage.getItem('user_jwtToken');
+    if (getToken === ""){
+        return <Redirect to = '/signin' / >
+    } else if(getToken !== ''){
+        let tokenDecoded = this.jwtDecode(getToken);
+        let tokenexp = tokenDecoded.payload.exp;
+        let currentTime = new Date().getTime();
+        if (tokenexp < currentTime/1000){
+            return <Redirect to = '/signin' / >
+        }
+    }
+
+}
+
+render() {
     return(
             <BrowserRouter>
                 <div className="Clear">
@@ -25,6 +51,8 @@ const Paths = () => {
             </BrowserRouter>
     );
 }
+}
+
 
 export default Paths;
 
