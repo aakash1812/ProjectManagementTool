@@ -4,13 +4,12 @@ import AddClient from './AddClient';
 
 class RightPanel extends React.Component {
 
-
     constructor() {
         super();
 
         this.state = {
             showAddMember: false,
-            showAddClient : false
+            showAddClient: false
         }
     }
 
@@ -38,8 +37,8 @@ class RightPanel extends React.Component {
         });
     }
 
-    render(){
-        return(
+    render() {
+        return (
             // <div className="RightPanel">
             //     <div>
             //         <AddTeamMember />
