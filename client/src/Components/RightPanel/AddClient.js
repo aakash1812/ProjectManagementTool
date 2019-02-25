@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 
-class AddTeamMember extends React.Component {
+class AddClient extends React.Component {
 
     constructor(){
         super();
@@ -11,7 +11,7 @@ class AddTeamMember extends React.Component {
             name: '',
             email:'',
             expertise: '', 
-            memberAdded: false
+            clientAdded: false
         }
     }
 
@@ -29,14 +29,16 @@ class AddTeamMember extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
      
-        axios.post('http://localhost:5000/dashboard/addTeamMembers', {
+        axios.post('http://localhost:5000/dashboard/addClient', {
           name: this.state.name,
           email: this.state.email,
-          expertise: this.state.expertise
+          technology: this.state.technology,
+          resources: this.state.resources,
+          description: this.state.description
         })
         .then(response => {
           if (response.data === 'Success') {
-              this.setState({memberAdded : true});
+              this.setState({clientAdded : true});
           } 
         //   else if (response.data === 'User already exists'){
         //     let cred = this.state.formErrors;
@@ -52,34 +54,41 @@ class AddTeamMember extends React.Component {
     successMessage (){
         return(
             <div>
-                Member Successfully Added 
+                Client Successfully Added 
             </div>
         );
     }
 
     render(){
         return(
-            <div className="AddNewMember">
+            <div className="AddClientMember">
                 <form className="ui form" onSubmit={this.onSubmit}>
                     <div className="field">
-                        <label>Name</label>
-                        <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange}/>
+                        <label>Client's Name</label>
+                        <input type="text" name="name" placeholder="Client's Name" value={this.state.name} onChange={this.handleChange}/>
                     </div>
                     <div className="field">
                         <label>E-mail Address</label>
                         <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange}/>
                     </div>
                     <div className="field">
-                        <label>Expertise</label>
-                        <input type="text" name="expertise" placeholder="Expertise" value={this.state.expertise} onChange={this.handleChange}/>
+                        <label>Requirement</label>
+                        <input type="text" name="technology" placeholder="Technology Requirement" value={this.state.technology} onChange={this.handleChange}/>
+                    </div>
+                    <div className="field">
+                        <label>Number of Resources required</label>
+                        <input type="text" name="resources" placeholder="Resources" value={this.state.resources} onChange={this.handleChange}/>
+                    </div>
+                    <div className="field">
+                        <label>Brief Summary of Project</label>
+                        <input type="text" name="description" placeholder="Description" value={this.state.description} onChange={this.handleChange}/>
                     </div>
                     <button className="ui button" type="submit">Submit</button>
                 </form>
-          
-           {this.successMessage}
+                {this.successMessage}
             </div>
         );
     }
 }
 
-export default AddTeamMember;
+export default AddClient;

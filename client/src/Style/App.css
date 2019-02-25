@@ -218,5 +218,11 @@
 .AddNewMember {
   position: relative;
   position: absolute;
-  margin: 10%;
+  margin: 2%;
+}
+
+.AddClientMember {
+  position: relative;
+  position: absolute;
+  margin: 2%;
 }
