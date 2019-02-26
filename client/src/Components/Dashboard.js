@@ -2,6 +2,7 @@ import React from 'react';
 import LeftPanel from './LeftPanel/LeftPanel';
 import Header from './Header';
 import RightPanel from './RightPanel/RightPanel';
+import axios from 'axios';
 
 
 class Dashboard extends React.Component {
@@ -9,10 +10,14 @@ class Dashboard extends React.Component {
     constructor(){
         super();
         this.state = {
-            username : ''
+            username : '',
+            user_token: ''
         }
     }
 
+    componentDidMount() {
+        
+    }
 
     render(){
         return(
