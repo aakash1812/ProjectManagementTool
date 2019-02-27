@@ -5,6 +5,7 @@ const RenderClientList = (props) => {
         member = JSON.parse(member);
            return(
         <div>
+
             <div class="ui big horizontal divided list" >
                 <div className="item" key={member.id}>
                     {/* <img class="ui avatar image" src="/public/images/1.jpg"/> */}
@@ -21,6 +22,7 @@ const RenderClientList = (props) => {
                         <div class="ui button">Delete</div>
                 </div>
             </div>
+            
         </div>
         );
     });

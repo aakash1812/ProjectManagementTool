@@ -10,6 +10,7 @@ class RightPanel extends React.Component {
         super();
 
         this.state = {
+            data: {name: 'Aakash', email: 'abc@abc.com', expertise : 'Py'},
             showAddMember: false,
             showAddClient: false,
             showTeam : false,

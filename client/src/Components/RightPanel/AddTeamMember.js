@@ -4,17 +4,45 @@ import axios from 'axios';
 
 class AddTeamMember extends React.Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+        
+           this.state = {
+                name : '',
+                email : '',
+                expertise : '',
+                memberAdded : false,
+            }
+        
+        // else if (this.props !== ''){
+        //     let data = this.props.data;
+        //     console.log(data);
+        //     this.state = {
+        //         name: data.name,
+        //         email: data.email,
+        //         expertise: data.expertise,
+        //         memberAdded: false
+        //     }
+        // }
 
-        this.state = {
-            name: '',
-            email:'',
-            expertise: '', 
-            memberAdded: false
-        }
+        
     }
 
+
+
+    componentDidMount() {
+        
+        if (this.props !== ''){
+            console.log(this.state);
+            let info = this.props.data;
+            this.setState({
+                name : "info.name",
+                email : "info.email",
+                expertise : "info.expertise"
+            });
+            console.log(this.state);
+        }
+    }
 
     handleChange = e => {
         let target = e.target;

@@ -6,6 +6,7 @@ import RegistrationSuccess from '../RegistrationSuccess';
 import Dashboard from '../Dashboard'
 import { BrowserRouter, Redirect} from 'react-router-dom';
 import AddTeamMember from '../RightPanel/AddTeamMember';
+import Settings from '../RightPanel/Settings';
 
 class Paths extends React.Component {
 
@@ -45,7 +46,7 @@ render() {
                     {/* </div>
                     <div className="DashBoard"> */}
                         <Route exact path="/dashboard" component={Dashboard}>  </Route>
-                        <Route exact path="/dashboard/addteammember" component={AddTeamMember}>  </Route>
+                        <Route exact path="/settings" component={Settings}>  </Route>
                     </div>
                 </div>
             </BrowserRouter>

@@ -118,7 +118,7 @@
 
 
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import FormErrors from './FormErrors';
@@ -126,7 +126,7 @@ import FormErrors from './FormErrors';
 
 
 
-class SignInForm extends Component {
+class SignInForm extends React.Component {
 
     constructor() {
 
@@ -219,13 +219,13 @@ class SignInForm extends Component {
 
 
     setRedirect = () => {
-        return <Redirect to='/dashboard' />
+        return <Redirect to='/dashboard' />;
     }
 
 
     render () {
         if (this.state.signinSuccess){
-            return this.setRedirect()
+            return this.setRedirect();
           }
 
         return (
