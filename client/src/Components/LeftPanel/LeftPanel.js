@@ -10,13 +10,12 @@ class LeftPanel extends React.Component {
 
     constructor(){
         super();
-        this.state={
-        }
+        this.state={}
     }
 
-    mySettings = () => {
+    mySettings() {
         console.log("My Settings");
-        this.props.history.push('/');
+        this.props.history.push('/settings');
     }
 
     render() {
@@ -38,7 +37,7 @@ class LeftPanel extends React.Component {
                         </div>
                     </h2>
                 </button>
-                <button onClick={this.mySettings}>
+                <button onClick={this.mySettings.bind(this)}>
                     <h1 class="ui icon header">
                         <i class="settings icon"></i>
                         <div class="content">
@@ -51,4 +50,4 @@ class LeftPanel extends React.Component {
     }
 }
 
-export default LeftPanel;
+export default withRouter(LeftPanel);

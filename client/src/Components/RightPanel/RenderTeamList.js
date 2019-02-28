@@ -109,7 +109,7 @@ class RenderTeamList extends React.Component {
                     this.state.renderList && this.RenderTeamList1(this.props)
                 }
                 {   
-                    this.state.editUser && <AddTeamMember data={this.state.userInfo}/>
+                    this.state.editUser && <AddTeamMember data={this.state.userInfo} isEdit={true}/>
                 }
             </div>
         );

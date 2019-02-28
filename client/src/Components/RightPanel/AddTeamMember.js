@@ -32,7 +32,7 @@ class AddTeamMember extends React.Component {
 
     componentDidMount() {
         
-        if (this.props !== ''){
+        if (this.props.isEdit === true){
             console.log(this.state);
             let info = this.props.data;
             this.setState({
