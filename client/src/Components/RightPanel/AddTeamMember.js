@@ -12,22 +12,8 @@ class AddTeamMember extends React.Component {
                 email : '',
                 expertise : '',
                 memberAdded : false,
-            }
-        
-        // else if (this.props !== ''){
-        //     let data = this.props.data;
-        //     console.log(data);
-        //     this.state = {
-        //         name: data.name,
-        //         email: data.email,
-        //         expertise: data.expertise,
-        //         memberAdded: false
-        //     }
-        // }
-
-        
+            }      
     }
-
 
 
     componentDidMount() {
@@ -36,9 +22,9 @@ class AddTeamMember extends React.Component {
             console.log(this.state);
             let info = this.props.data;
             this.setState({
-                name : "info.name",
-                email : "info.email",
-                expertise : "info.expertise"
+                name : info.name,
+                email : info.email,
+                expertise : info.expertise
             });
             console.log(this.state);
         }
@@ -66,11 +52,6 @@ class AddTeamMember extends React.Component {
           if (response.data === 'Success') {
               this.setState({memberAdded : true});
           } 
-        //   else if (response.data === 'User already exists'){
-        //     let cred = this.state.formErrors;
-        //     cred.credentials = 'Email-Id already exists';
-        //     this.setState({formErrors : cred});
-        //   }
         })
         .catch(function (error) {
           console.log(error);

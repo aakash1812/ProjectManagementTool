@@ -1,4 +1,8 @@
 import React from 'react';
+import Header from '../Header';
+import LeftPanel from '../LeftPanel/LeftPanel';
+import RightPanel from './RightPanel';
+import SettingTab from './SettingTab';
 
 class Settings extends React.Component {
     constructor(){
@@ -13,7 +17,9 @@ class Settings extends React.Component {
     render(){
         return(
             <div>
-                Settings
+                <Header title="User Setting Page"/>
+                <LeftPanel />
+                <SettingTab />
             </div>
         );
     }
